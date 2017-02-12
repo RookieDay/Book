@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="Cache-Control" content="max-age=5" />
+    <meta http-equiv="Expires" content="Mon, 20 Jul 2017 23:00:00 GMT" />
+
+</head>
+<body>
+<script>
+    var func1 = function(a,b,c){
+        this.name = 'func1';
+        //func2.call(this,a,b,c);
+        //func2.call(this,arguments);
+    };
+    var func2 = function(){
+        console.log(this.name);
+        console.log(arguments);
+    };
+    func1(1,2,3);
+
+
+    var click = function(dom,callback){
+        dom.addEventListener('click',function(e){
+            callback && callback.apply(this,arguments);
+        });
+    }
+
+    click(document,function (dom,callback){
+        console.log(dom);
+    });
+</script>
+</body>
+</html>

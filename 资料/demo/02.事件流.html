@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <a href="javascript:;">dddd</a>
+    </div>
+    <script>
+        window.onload = function(){
+            document.getElementsByTagName('a')[0].addEventListener('click',function(e){
+                console.log('a');
+            },true);
+            /*处理函数在捕获阶段执行*/
+            document.getElementsByTagName('div')[0].addEventListener('click',function(e){
+                console.log('div');
+                /*在捕获的时候  禁止冒泡*/
+                e.stopPropagation();
+            },true);
+            /*处理函数在捕获阶段执行*/
+        }
+    </script>
+</body>
+</html>

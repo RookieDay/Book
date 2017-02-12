@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //递归 程序调用自身的编程技巧称为递归 自己调用自己
+    function factorial(num) {
+        return ( num <= 1 ) ? 1 : num * factorial(num - 1);
+    }
+
+    console.log(factorial(8));
+
+</script>

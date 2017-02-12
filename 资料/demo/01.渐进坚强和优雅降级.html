@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,html,p{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            display: block;
+            width: 200px;
+            height: 100px;
+            background:aquamarine;
+            /*我就是要用这个新css属性*/
+            transition: all 1s ease 0s;
+            /*可是发现了一些低版本浏览器不支持怎么吧*/
+            /*往下兼容*/
+            -webkit-transition:all 1s ease 0s;
+            -moz-transition:all 1s ease 0s;
+            -o-transition: all 1s ease 0s;
+            /*那么通常这样考虑的和这样的侧重点出发的css就是优雅降级*/
+        }
+        a:hover{
+            height: 200px;
+        }
+
+        /*那如果我们的产品要求我们要重低版本的浏览器兼容开始*/
+        a{
+            /*优先考虑低版本的*/
+            -webkit-transition:all 1s ease 0s;
+            -moz-transition:all 1s ease 0s;
+            -o-transition: all 1s ease 0s;
+            /*高版本的就肯定是渐进渐强*/
+            transition: all 1s ease 0s;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="index.html" target="_blank">渐进坚强和优雅降级</a>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*首先有个人*/
+    var Person = function(){
+        /*对象本身拥有的属性*/
+        this.name = '小明';
+    };
+
+    Person.prototype = {
+        /*通过原型继承的属性*/
+        age:10
+    };
+
+    var person  = new Person();
+
+    /*首先我们遍历下 student的属性*/
+    var forin = [];
+    for(var o in person){
+        forin.push(o);
+    }
+    console.log(forin);
+    /*这个时候我们发现  for in 的形式拿的是 所有的属性 包括  原型继承的*/
+    console.log(Object.keys(person));
+    /*发现  Object.keys 拿到的是  不包含 原型继承的  并且不包含非枚举属性*/
+    console.log('-------------------------------------');
+
+
+
+    /*什么是属性枚举性 enumerable  什么是非枚举属性*/
+
+    /*怎么定义非枚举属性 enumerable*/
+    Object.defineProperty(person,'sex',{value:'男',enumerable:false});
+    /*非枚举属性有什么特别*/
+    console.log(person.sex);
+    person.sex = '女';
+    console.log(person.sex);//说明什么？  非枚举属性   不能重新定义值
+    console.log('-------------------------------------');
+
+
+    /*那么怎么获取枚举属性*/
+    console.log(Object.keys(person));
+    /*getOwnPropertyNames  获取自身的所有属性  不包含原型继承*/
+    console.log(Object.getOwnPropertyNames(person));
+
+    var fields = Object.getOwnPropertyNames(person);
+    /*  我们  两个  比价一下就可以了  getOwnPropertyNames keys */
+
+</script>
+</body>
+</html>

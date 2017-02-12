@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //闭包 可以包含自由（未绑定到特定对象）变量的代码块
+
+    function outerFun() {
+        var a = 0;
+
+        function innerFun() {
+            a++;//包的是变量
+            alert(a);
+        }//这就是个包
+        return innerFun;  //注意这里
+    }
+    var obj = outerFun();
+    obj();//1
+    obj();//2
+    var obj2 = outerFun();
+    obj2();//1
+    obj2();//2
+    
+
+    //闭包的好处
+    //不产生全局变量，实现属性私有化
+    //不污染别人 其实就是命名空间
+    //也不被别人污染
+    //最典型的就是第三方框架 比如JQuery 为了不引起变量名污染 在最外层使用了闭包
+    //方便协同开发 模块化
+    //实现属性私有化
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        var salary = 100;
+        this.getSalary = function () {
+            return salary;
+        }
+    }
+
+    var person = new Person("aaa", 18);
+    console.log(person.name);
+    console.log(person.salary);
+    console.log(person.getSalary());
+
+
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //this是一个关键字
+    //它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用
+
+    //1.作为纯粹的函数调用 this指向全局对象
+    //2.作为对象的方法调用 this指向调用对象
+    //3.作为构造函数被调用 this指向新的对象（new会改变this的指向）
+    //4.apply调用 this指向apply方法的第一个参数
+
+    function test() {
+        this.x = 1;
+        console.log(this);//Window
+        console.log(this.x);//1
+    }
+    test();//纯粹的函数调用
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sayHello = function () {
+            alert("我是" + this.name + "我今年" + this.age);
+        }
+    }
+
+    var person = new Person("a", 18);//构造函数被调用
+    person.sayHello();//对象的方法调用
+
+
+</script>
